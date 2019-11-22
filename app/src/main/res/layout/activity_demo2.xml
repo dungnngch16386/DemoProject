@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.Demo2Activity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/border_custom2">
+        <ImageButton
+            android:id="@+id/ibCategory"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:background="#F1EFEF"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageButton
+            android:id="@+id/ibBookmark"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:background="#F1EFEF"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_bookmark_border_black_24dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:text="Tài xế xe Mercedes gây tai nạn bị tạm giữ"/>
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:text="2h trước"/>
+        <TextView
+            android:id="@+id/tvShortParagraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"
+            android:maxLines="4"
+            android:text="HÀ NỘI - Tài xế Vũ Thị Hồng Thái (47 tuổi) lái ôtô Mercedes tông ba xe máy đã bị Công an quận Cầu Giấy tạm giữ hình sự."/>
+        <ImageView
+            android:id="@+id/ivPaper"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/anhmot"/>
+        <TextView
+            android:id="@+id/tvShortParagraph2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"
+            android:maxLines="9"
+            android:text="Nhà chức trách ra quyết định trên vào chiều 22/11, để làm rõ hành vi Vi phạm quy định về tham gia giao thông đường bộ của bà Thái. Cũng trong chiều nay, hơn một ngày sau khi xảy ra tai nạn, Công an quận Cầu Giấy xác minh được danh tính nạn nhân tử vong là chị Đỗ Thị Mai Quyên (27 tuổi, quê Hải Dương)."/>
+        <TextView
+            android:id="@+id/tvShortParagraph22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"
+            android:maxLines="9"
+            android:text="Do nữ nạn nhân bị biến dạng sau tai nạn nên cơ quan điều tra phải trưng cầu giám định dấu vân tay, xét nghiệm ADN và bằng các biện pháp nghiệp vụ để xác định danh tính, Công an quận Cầu Giấy cho hay."/>
+        <TextView
+            android:id="@+id/tvShortParagraph2222"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"
+            android:maxLines="9"
+            android:text="Theo điều tra ban đầu, khoảng 7h30 ngày 20/11, bà Thái lái chiếc Mercedes GLC 250 vừa mới mua đến nút giao Lê Văn Lương - Nguyễn Ngọc Vũ (chân cầu vượt Lê Văn Lương). Thấy một số xe phía trước đang dừng đèn đỏ, bà Thái chuyển sang chân phanh nhưng lại đạp nhầm chân ga, do đi giày cao gót."/>
+        <TextView
+            android:id="@+id/tvShortParagraph222"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"
+            android:maxLines="9"
+            android:text="Ôtô sau đó đâm vào ba xe máy và một xe đạp, khiến một người chết. Chiếc Mercedes GLC 250 phát cháy cùng xe của các nạn nhân. Thời điểm xảy ra tai nạn, bà Thái không có nồng độ cồn."/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/border_custom2">
+        <TextView
+            android:id="@+id/tvNotificationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlue"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"/>
+        <ImageButton
+            android:id="@+id/ibBookmark"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:background="#F1EFEF"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_settings_silve"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp">
+            <ImageButton
+                android:id="@+id/ibBookmark1"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:background="#F1EFEF"
+                android:scaleType="fitXY"
+                android:src="@drawable/ballball"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:id="@+id/ibBookmark12"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:background="#F1EFEF"
+                android:scaleType="fitXY"
+                android:src="@drawable/bagbag"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
