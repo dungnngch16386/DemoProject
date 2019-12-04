@@ -1,24 +1,21 @@
-package com.example.demoproject.ui.home;
+package com.example.demoproject.ui.detailcategory;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-
+import com.example.demoproject.MainActivity;
 import com.example.demoproject.R;
 import com.example.demoproject.SQLHelper;
-import com.example.demoproject.ui.bookmarks.Demo3Activity;
 import com.example.demoproject.ui.detail.DetailActivity;
 
 import org.w3c.dom.Document;
@@ -34,61 +31,61 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class HomeFragment extends Fragment {
+public class DetailCategoryActivity extends AppCompatActivity {
 
-    ListView lvHome;
-    ImageButton ibBookmark;
+    ListView lvCategory;
+    TextView tvTitleOfCategory;
+    ImageButton ibBookmark, ibBackCategory;
     SQLHelper sqlHelper;
+    String rss;
 
     //    Demo RSS
-    PaperAdapterDemo paperAdapterDemo;
-    ArrayList<Paper> paperArrayList;
-    ArrayList<String> hinhanhArray;
+    PaperCateAdapter paperCateAdapter;
+    ArrayList<PaperCate> paperCates;
 
-    private HomeViewModel homeViewModel;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail_category);
+        sqlHelper = new SQLHelper(getBaseContext());
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        sqlHelper = new SQLHelper(getContext());
-
-        ibBookmark = view.findViewById(R.id.ibBookmark);
-        ibBookmark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(getContext(), Demo3Activity.class);
-                startActivity(intent1);
-            }
-        });
+        Intent intent = getIntent();
+        rss = intent.getStringExtra("rss");
 
         // Tuong tac voi RSS
-        lvHome = view.findViewById(R.id.lvHome);
-        paperArrayList = new ArrayList<Paper>();
-        hinhanhArray = new ArrayList<>();
+        lvCategory = findViewById(R.id.lvCategory);
+        tvTitleOfCategory = findViewById(R.id.tvTitleOfCategory);
+        ibBackCategory = findViewById(R.id.ibBackCategory);
+        paperCates = new ArrayList<>();
+        new ReadRSS().execute(rss);
 
-        new ReadRSS().execute("https://vnexpress.net/rss/the-gioi.rss");
+        if (rss.equals("https://vnexpress.net/rss/kinh-doanh.rss")) {
+            tvTitleOfCategory.setText("Bussiness");
+        } else if (rss.equals("https://vnexpress.net/rss/the-thao.rss")) {
+            tvTitleOfCategory.setText("Sport");
+        } else if (rss.equals("https://vnexpress.net/rss/the-gioi.rss")) {
+            tvTitleOfCategory.setText("World");
+        } else if (rss.equals("https://vnexpress.net/rss/oto-xe-may.rss")) {
+            tvTitleOfCategory.setText("Vehicle");
+        }
 
-        lvHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ibBackCategory.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String linkDemo = paperArrayList.get(i).link;
-                Intent intent = new Intent(getContext(), DetailActivity.class);
-                intent.putExtra("link", linkDemo);
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
 
-        lvHome.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        lvCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                sqlHelper.insertProduct(paperArrayList.get(i).title, paperArrayList.get(i).date, paperArrayList.get(i).link);
-                Toast.makeText(getContext(), "The news was added into the bookmark list", Toast.LENGTH_LONG).show();
-                paperAdapterDemo.notifyDataSetChanged();
-                return true;
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String linkDemo = paperCates.get(i).link;
+                Intent intent = new Intent(getBaseContext(), DetailActivity.class);
+                intent.putExtra("link", linkDemo);
+                startActivity(intent);
             }
         });
-//        sqlHelper.getAllProduct();
-        return view;
     }
 
     class ReadRSS extends AsyncTask<String, Void, String> {
@@ -170,11 +167,11 @@ public class HomeFragment extends Fragment {
                 }
 
 //                Truyen thong tin de hien thi
-                paperArrayList.add(new Paper(tieuDe, link, hinhAnh, doanVanNgan, binhLuan, bocTachThoiGian));
+                paperCates.add(new PaperCate(tieuDe, link, hinhAnh, doanVanNgan, binhLuan, bocTachThoiGian));
             }
-            paperAdapterDemo = new PaperAdapterDemo(getContext(), R.layout.item_paper, paperArrayList);
-            lvHome.setAdapter(paperAdapterDemo);
-            paperAdapterDemo.notifyDataSetChanged();
+            paperCateAdapter = new PaperCateAdapter(getBaseContext(), R.layout.item_papercate, paperCates);
+            lvCategory.setAdapter(paperCateAdapter);
+            paperCateAdapter.notifyDataSetChanged();
             super.onPostExecute(s);
         }
     }

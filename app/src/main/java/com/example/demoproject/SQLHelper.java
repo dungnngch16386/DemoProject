@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
+import java.util.ArrayList;
 
 public class SQLHelper extends SQLiteOpenHelper {
     private static final String TAG = "SQLHelper";
@@ -96,7 +98,12 @@ public class SQLHelper extends SQLiteOpenHelper {
             Log.d(TAG, "getAllProduct: " + "id - " + id + " - title - " + title + " - time - " + time + " - link - " + link);
         }
         closeDB();
+    }
 
+    public Cursor getAll(SQLiteDatabase db){
+        Cursor cursor = db.query(false, DB_NAME_TABLE, null, null, null
+                , null, null, null, null);
+        return cursor;
     }
 
     private void closeDB() {

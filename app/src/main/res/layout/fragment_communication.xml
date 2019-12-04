@@ -52,11 +52,12 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvSport"
+                android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/ibBookmark1"
                 android:layout_centerVertical="true"
-                android:text="Bóng đá"
+                android:text="Thể thao"
                 android:layout_marginLeft="15dp"
                 android:textSize="20dp"/>
             <ImageView
@@ -83,7 +84,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvBussiness"
+                android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/ibBookmark111"
                 android:layout_centerVertical="true"
@@ -114,7 +116,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvWorld"
+                android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/ibBookmark2"
                 android:layout_centerVertical="true"
@@ -207,7 +210,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvCar"
+                android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/ibBookmark5"
                 android:layout_centerVertical="true"

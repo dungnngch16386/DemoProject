@@ -18,18 +18,18 @@ public class CategoryFragment extends Fragment {
 
     private CategoryViewModel categoryViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        categoryViewModel =
-                ViewModelProviders.of(this).get(CategoryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_category, container, false);
-        //final TextView textView = root.findViewById(R.id.text_category);
+//    public View onCreateView(@NonNull LayoutInflater inflater,
+//                             ViewGroup container, Bundle savedInstanceState) {
+//        categoryViewModel =
+//                ViewModelProviders.of(this).get(CategoryViewModel.class);
+//        View root = inflater.inflate(R.layout.fragment_category, container, false);
+//        final TextView textView = root.findViewById(R.id.text_category);
 //        categoryViewModel.getText().observe(this, new Observer<String>() {
 //            @Override
 //            public void onChanged(@Nullable String s) {
 //                textView.setText(s);
 //            }
 //        });
-        return root;
-    }
+//        return root;
+//    }
 }

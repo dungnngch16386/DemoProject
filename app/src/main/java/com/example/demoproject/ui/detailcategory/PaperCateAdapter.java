@@ -1,7 +1,6 @@
-package com.example.demoproject.ui.home;
+package com.example.demoproject.ui.detailcategory;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,24 +10,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.demoproject.R;
+import com.example.demoproject.ui.home.Paper;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.security.AccessController;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaperAdapterDemo extends ArrayAdapter<Paper> {
+public class PaperCateAdapter extends ArrayAdapter<PaperCate> {
+
     Context context;
 
-    public PaperAdapterDemo(Context context, int resource, List<Paper> items) {
+    public PaperCateAdapter(Context context, int resource, List<PaperCate> items) {
         super(context, resource, items);
         this.context = context;
     }
@@ -39,16 +32,16 @@ public class PaperAdapterDemo extends ArrayAdapter<Paper> {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            view = inflater.inflate(R.layout.item_paper, null);
+            view = inflater.inflate(R.layout.item_papercate, null);
         }
-        Paper p = getItem(position);
+        PaperCate p = getItem(position);
         if (p != null) {
             // Anh xa + Gan gia tri
-            ImageView ivPaper = view.findViewById(R.id.ivPaper);
-            TextView tvTitle = view.findViewById(R.id.tvTitle);
-            TextView tvShortParagraph = view.findViewById(R.id.tvShortParagraph);
-            TextView tvComment = view.findViewById(R.id.tvComment);
-            TextView tvDate = view.findViewById(R.id.tvDate);
+            ImageView ivPaper = view.findViewById(R.id.ivPaper2);
+            TextView tvTitle = view.findViewById(R.id.tvTitle2);
+            TextView tvShortParagraph = view.findViewById(R.id.tvShortParagraph2);
+            TextView tvComment = view.findViewById(R.id.tvComment2);
+            TextView tvDate = view.findViewById(R.id.tvDate2);
 
             tvTitle.setText(p.title);
             tvShortParagraph.setText(p.shortParagraph);

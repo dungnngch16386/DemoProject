@@ -1,5 +1,6 @@
 package com.example.demoproject.ui.setting;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.demoproject.R;
+import com.example.demoproject.ui.bookmarks.Demo3Activity;
 
 public class SettingFragment extends Fragment {
+
+    TextView tvBookmark;
 
     private SettingViewModel settingViewModel;
 
@@ -22,14 +26,18 @@ public class SettingFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         settingViewModel =
                 ViewModelProviders.of(this).get(SettingViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_setting, container, false);
-        //final TextView textView = root.findViewById(R.id.text_setting);
-//        settingViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
-        return root;
+        View view = inflater.inflate(R.layout.fragment_setting, container, false);
+
+        tvBookmark = view.findViewById(R.id.tvBookmark);
+
+        tvBookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Demo3Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 }
