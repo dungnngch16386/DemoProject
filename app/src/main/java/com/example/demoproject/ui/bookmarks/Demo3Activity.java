@@ -31,7 +31,7 @@ import java.util.List;
 public class Demo3Activity extends AppCompatActivity {
 
     List<Bookmark> bookmarks;
-    ImageButton ibBackBookmark;
+    ImageButton ibBackBookmark, ibBookmark;
     EditText inputSearch;
     RecyclerView recyclerView;
     BookmarkAdapter bookmarkAdapter;
@@ -47,11 +47,22 @@ public class Demo3Activity extends AppCompatActivity {
         sqlHelper = new SQLHelper(getBaseContext());
         ibBackBookmark = findViewById(R.id.ibBackBookmark);
         inputSearch = findViewById(R.id.inputSearch);
+        ibBookmark = findViewById(R.id.ibBookmark);
 
         ibBackBookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ibBookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sqlHelper.deleteNoteAll();
+                Toast.makeText(getBaseContext(), "Removing all bookmarks successfully!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getBaseContext(), Demo3Activity.class);
                 startActivity(intent);
             }
         });

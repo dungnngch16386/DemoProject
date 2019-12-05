@@ -71,6 +71,9 @@ public class HomeFragment extends Fragment {
         lvHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                sqlHelper.insertHistory(paperArrayList.get(i).title, paperArrayList.get(i).date, paperArrayList.get(i).link);
+                paperAdapterDemo.notifyDataSetChanged();
+
                 String linkDemo = paperArrayList.get(i).link;
                 Intent intent = new Intent(getContext(), DetailActivity.class);
                 intent.putExtra("link", linkDemo);
@@ -87,7 +90,7 @@ public class HomeFragment extends Fragment {
                 return true;
             }
         });
-//        sqlHelper.getAllProduct();
+
         return view;
     }
 

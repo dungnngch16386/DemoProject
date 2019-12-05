@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.detailcategory.DetailCategoryActivity"></activity>
+        <activity android:name=".ui.history.HistoryActivity"></activity>
+        <activity android:name=".ui.detailcategory.DetailCategoryActivity" />
         <activity android:name=".ui.bookmarks.Demo3Activity" />
         <activity android:name=".ui.detail.Demo2Activity" />
         <activity android:name=".ui.detail.DetailActivity" />

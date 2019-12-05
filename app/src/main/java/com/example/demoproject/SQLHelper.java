@@ -13,7 +13,8 @@ public class SQLHelper extends SQLiteOpenHelper {
     private static final String TAG = "SQLHelper";
     static final String DB_NAME = "NewsPaper.db";
     static final String DB_NAME_TABLE = "LinkTable";
-    static final int DB_VERSION = 1;
+    static final String DB_NAME_TABLE2 = "HistoryTable";
+    static final int DB_VERSION = 2;
 
     SQLiteDatabase sqLiteDatabase;
     ContentValues contentValues;
@@ -32,15 +33,21 @@ public class SQLHelper extends SQLiteOpenHelper {
                 "time Text," +
                 " link Text )";
 
-
+        String queryCreaTable2 = "CREATE TABLE HistoryTable ( " +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "title Text," +
+                "time Text," +
+                " link Text )";
         //Chạy câu lệnh tạo bảng
         db.execSQL(queryCreaTable);
+        db.execSQL(queryCreaTable2);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion != newVersion) {
             db.execSQL("drop table if exists " + DB_NAME_TABLE);
+            db.execSQL("drop table if exists " + DB_NAME_TABLE2);
             onCreate(db);
         }
     }
@@ -61,6 +68,18 @@ public class SQLHelper extends SQLiteOpenHelper {
         closeDB();
     }
 
+    public void insertHistory(String title, String time, String link) {
+        sqLiteDatabase = getWritableDatabase();
+        contentValues = new ContentValues();
+
+        contentValues.put("title", title);
+        contentValues.put("time", time);
+        contentValues.put("link", link);
+
+        sqLiteDatabase.insert(DB_NAME_TABLE2, null, contentValues);
+        closeDB();
+    }
+
     public int deleteNote(int id) {
         sqLiteDatabase = getWritableDatabase();
         return Long.valueOf(sqLiteDatabase.delete(DB_NAME_TABLE, " id=?",
@@ -70,6 +89,13 @@ public class SQLHelper extends SQLiteOpenHelper {
     public boolean deleteNoteAll() {
         sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.delete(DB_NAME_TABLE, null, null);
+        closeDB();
+        return true;
+    }
+
+    public boolean deleteAllHistory() {
+        sqLiteDatabase = getWritableDatabase();
+        sqLiteDatabase.delete(DB_NAME_TABLE2, null, null);
         closeDB();
         return true;
     }
@@ -102,6 +128,12 @@ public class SQLHelper extends SQLiteOpenHelper {
 
     public Cursor getAll(SQLiteDatabase db){
         Cursor cursor = db.query(false, DB_NAME_TABLE, null, null, null
+                , null, null, null, null);
+        return cursor;
+    }
+
+    public Cursor getHistory(SQLiteDatabase db){
+        Cursor cursor = db.query(false, DB_NAME_TABLE2, null, null, null
                 , null, null, null, null);
         return cursor;
     }

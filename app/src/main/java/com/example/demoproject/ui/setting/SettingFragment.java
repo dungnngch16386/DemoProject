@@ -15,10 +15,11 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.demoproject.R;
 import com.example.demoproject.ui.bookmarks.Demo3Activity;
+import com.example.demoproject.ui.history.HistoryActivity;
 
 public class SettingFragment extends Fragment {
 
-    TextView tvBookmark;
+    TextView tvBookmark, tvHistoryGo;
 
     private SettingViewModel settingViewModel;
 
@@ -29,11 +30,20 @@ public class SettingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
         tvBookmark = view.findViewById(R.id.tvBookmark);
+        tvHistoryGo = view.findViewById(R.id.tvHistoryGo);
 
         tvBookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), Demo3Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        tvHistoryGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), HistoryActivity.class);
                 startActivity(intent);
             }
         });
