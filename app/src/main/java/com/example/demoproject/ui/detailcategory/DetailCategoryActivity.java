@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.demoproject.MainActivity;
 import com.example.demoproject.R;
 import com.example.demoproject.SQLHelper;
+import com.example.demoproject.ui.bookmarks.Demo3Activity;
 import com.example.demoproject.ui.detail.DetailActivity;
 
 import org.w3c.dom.Document;
@@ -27,7 +28,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,6 +41,7 @@ public class DetailCategoryActivity extends AppCompatActivity {
     ImageButton ibBookmark, ibBackCategory;
     SQLHelper sqlHelper;
     String rss;
+    Date dateAccess;
 
     //    Demo RSS
     PaperCateAdapter paperCateAdapter;
@@ -56,6 +60,7 @@ public class DetailCategoryActivity extends AppCompatActivity {
         lvCategory = findViewById(R.id.lvCategory);
         tvTitleOfCategory = findViewById(R.id.tvTitleOfCategory);
         ibBackCategory = findViewById(R.id.ibBackCategory);
+        ibBookmark = findViewById(R.id.ibBookmarkOfDetail);
         paperCates = new ArrayList<>();
         new ReadRSS().execute(rss);
 
@@ -72,7 +77,14 @@ public class DetailCategoryActivity extends AppCompatActivity {
         ibBackCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                finish();
+            }
+        });
+
+        ibBookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), Demo3Activity.class);
                 startActivity(intent);
             }
         });
@@ -87,6 +99,14 @@ public class DetailCategoryActivity extends AppCompatActivity {
             }
         });
     }
+
+//    public static String format(Date date, String dateAccess) {
+//        if (date == null) {
+//            return " ";
+//        }
+//        SimpleDateFormat sdf = new SimpleDateFormat(dateAccess);
+//        return sdf.format(date);
+//    }
 
     class ReadRSS extends AsyncTask<String, Void, String> {
 

@@ -29,7 +29,7 @@
             android:textColor="@color/colorBlue"
             android:layout_centerInParent="true"/>
         <ImageButton
-            android:id="@+id/ibBookmark"
+            android:id="@+id/ibBookmarkOfDetail"
             android:layout_width="33dp"
             android:layout_height="33dp"
             android:background="#F1EFEF"

@@ -52,8 +52,7 @@ public class Demo3Activity extends AppCompatActivity {
         ibBackBookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -62,6 +61,7 @@ public class Demo3Activity extends AppCompatActivity {
             public void onClick(View view) {
                 sqlHelper.deleteNoteAll();
                 Toast.makeText(getBaseContext(), "Removing all bookmarks successfully!", Toast.LENGTH_LONG).show();
+                finish();
                 Intent intent = new Intent(getBaseContext(), Demo3Activity.class);
                 startActivity(intent);
             }

@@ -49,7 +49,7 @@ public class HistoryActivity extends AppCompatActivity {
             public void onClick(View view) {
                 sqlHelper.deleteAllHistory();
                 Toast.makeText(getBaseContext(), "Removing all histories successfully!", Toast.LENGTH_LONG).show();
-
+                finish();
                 Intent intent = new Intent(getBaseContext(), HistoryActivity.class);
                 startActivity(intent);
 
@@ -69,8 +69,7 @@ public class HistoryActivity extends AppCompatActivity {
         ibBackHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }
